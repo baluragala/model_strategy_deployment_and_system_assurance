@@ -65,8 +65,22 @@ proposal carries `origin="model:proposal"` rather than `origin="user:turn"`.
 |---|---|
 | `GenAI_C8_W1S2_Model_Strategy_Deployment_System_Assurance.ipynb` | the lab — 81 cells, 9 stages |
 | `INSTRUCTOR_NOTES.md` | minute-by-minute run sheet, discussion prompts, expected questions |
-| `deck/index.html` | 62-slide presenter deck sharing the notebook's spine |
+| `deck/index.html` | 62-slide technical deck sharing the notebook's spine |
+| `deck-simple/index.html` | 43-slide plain-language version for non-technical audiences |
 | `docs/superpowers/specs/` | design spec for the redesign |
+
+## Two versions of the slides
+
+Same session, same six blocks, same conclusions — pitched at two different rooms.
+
+| | For | Framing |
+|---|---|---|
+| `deck/` | engineers and architects | the nine stages, with real numbers, tables and code |
+| `deck-simple/` | mixed or non-technical audiences, new to GenAI | one sustained analogy — hiring, onboarding and reviewing a new teammate |
+
+The plain-language version carries the same architecture and the same incident, but no code and no
+jargon. The prompt-injection story becomes a forged memo in the company filing cabinet; the
+guardrails become "the assistant may ask, only a manager may approve."
 
 ## A note on the numbers
 
