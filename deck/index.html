@@ -1522,11 +1522,14 @@ for d, _ in docs:
         <span class="ok">trusted=False</span>, source=d.id))
 
 <span class="cm"># CONTROLS 2–5 — authorisation</span>
-def _authorise(self, call, req):
+def _authorise(self, call, req, tainted):
     if call.name not in TOOLS:
         return False, "schema: unknown tool"
-    if not call.origin.startswith("user:"):
+    if call.origin.startswith("retrieved:"):
         return False, <span class="ok">"provenance: not from user turn"</span>
+    if call.name in tainted:
+        return False, <span class="ok">"provenance: matches a directive
+            planted in untrusted content"</span>
     if call.name in self.NEVER_AUTOMATED:
         return False, <span class="ok">"policy: KB-005 forbids"</span>
     if TOOLS[call.name]["writes"]:
@@ -1548,6 +1551,10 @@ answer     [KB-009] New starter onboarding
            checklist.</div>
     <div class="callout good"><strong>The injected directive is still in the context window.</strong>
     It simply has no authority.</div>
+    <div class="callout warn" style="font-size:13.5px"><strong>Why <code>tainted</code>, not just
+    <code>origin</code>?</strong> A real model always emits the tool call itself, so "did the model
+    propose it" cannot distinguish intent from inducement. "Was there a matching directive in
+    untrusted content" can.</div>
   </div>
 </div>
 <div class="note"><strong>Note</strong> · Show the notebook running this live if you can. The 'still in the context window' line is the crux.</div></section>
